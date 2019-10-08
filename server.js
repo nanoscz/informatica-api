@@ -13,11 +13,16 @@ const settings = nconf.file({ file: 'config/config.json' })
 const port = settings.get('settings').port || 80
 const format = settings.get('settings').morgan || 'tiny'
 
+const router = require('./src/routers')
+
 const app = express()
 const server = http.createServer(app)
+
+app.use(express.json())
 app.use(morgan(format))
 app.use(cors())
 app.use(compression())
+app.use('/v1', router)
 app.use((err, req, res, next) => {
   debug(`Error: ${err.message}`)
 
