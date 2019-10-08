@@ -1,0 +1,30 @@
+{
+  "name": "informatica-api",
+  "version": "1.0.0",
+  "description": "API REST for Informatica-ui",
+  "main": "server.js",
+  "scripts": {
+    "dev": "DEBUG=some:* NODE_ENV=development nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
+    "lint": "standard 'src/**/*.js'",
+    "migrate": "sequelize db:migrate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fernando Castillo Torrico <fernandocto.scz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "nconf": "^0.10.0",
+    "sequelize": "^5.19.4"
+  },
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "nodemon": "^1.19.3",
+    "sequelize-cli": "^5.5.1",
+    "standard": "^14.3.1"
+  }
+}
