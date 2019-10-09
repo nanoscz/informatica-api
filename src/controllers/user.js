@@ -1,19 +1,51 @@
 'use strict'
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const saltRounds = 10
 const User = require('../models').user
 const { keysCanonical } = require('../../utils')
 class UserController {
   findAll (req, res, next) {
     User.findAll()
-      .then(users => res.json(users))
+      .then(users => {
+        for (const user of users) {
+          delete user.dataValues.password
+        }
+        res.json(users)
+      })
       .catch(err => next(err))
   }
 
   findOne (req, res, next) {
     User.findOne({ where: { id: req.params.id } })
-      .then(user => res.json(user))
+      .then(user => {
+        delete user.dataValues.password
+        res.json(user)
+      })
+      .catch(err => next(err))
+  }
+
+  login (req, res, next) {
+    const body = req.body
+    User.findOne({ where: { username: body.username } })
+      .then(user => {
+        if (!user) {
+          return res.status(400).send({
+            error: {
+              name: 'Authentication Error',
+              message: 'The username or password is incorrect'
+            }
+          })
+        }
+        bcrypt.compare(body.password, user.password)
+          .then((result) => {
+            if (result) {
+              delete user.dataValues.password
+              res.json(user)
+            }
+          })
+          .catch(err => next(err))
+      })
       .catch(err => next(err))
   }
 
