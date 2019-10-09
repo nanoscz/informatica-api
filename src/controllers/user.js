@@ -3,7 +3,7 @@
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
 const User = require('../models').user
-const { keysCanonical } = require('../../utils')
+const { keysCanonical } = require('../utils')
 class UserController {
   findAll (req, res, next) {
     User.findAll()
