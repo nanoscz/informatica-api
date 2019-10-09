@@ -65,7 +65,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     defaultScope: {
-      attributes: { exclude: ['password'] }
+      attributes: {
+        exclude: [
+          'usernameCanonical',
+          'emailCanonical',
+          'confirmation_token',
+          'password_requested_at',
+          'salt'
+        ]
+      }
     },
     tableName: 'fos_user',
     timestamps: false
