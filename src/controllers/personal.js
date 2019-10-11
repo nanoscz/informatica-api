@@ -18,7 +18,7 @@ class PersonalController {
   create (req, res, next) {
     const body = req.body
     Personal.create(body)
-      .then(() => res.status(201).end())
+      .then((personal) => res.status(201).json(personal))
       .catch(err => next(err))
   }
 
