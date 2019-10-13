@@ -10,7 +10,7 @@ const chalk = require('chalk')
 const nconf = require('nconf')
 const settings = nconf.file({ file: 'config/config.json' })
 
-const port = settings.get('settings').port || 80
+const port = process.env.PORT || settings.get('settings').port
 const format = settings.get('settings').morgan || 'tiny'
 
 const router = require('./src/routers')
