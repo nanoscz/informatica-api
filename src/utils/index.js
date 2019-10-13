@@ -2,7 +2,7 @@
 
 const keysCanonical = {
   username: 'usernameCanonical',
-  email:'emailCanonical'
+  email: 'emailCanonical'
 }
 
 module.exports = {
