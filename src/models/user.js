@@ -78,6 +78,8 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'fos_user',
     timestamps: false
   })
-  user.associate = function (models) {}
+  user.associate = function (models) {
+    user.hasMany(models.solicitud)
+  }
   return user
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const personal = sequelize.define('remitente', {
+  const remitente = sequelize.define('remitente', {
     nombre: DataTypes.STRING,
     cargo: DataTypes.STRING,
     servicio: DataTypes.STRING,
@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'infor_remitente',
     timestamps: false
   })
-  personal.associate = function (models) {}
-  return personal
+  remitente.associate = function (models) {
+    remitente.hasMany(models.solicitud)
+  }
+  return remitente
 }
