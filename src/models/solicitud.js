@@ -28,11 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     solicitud.belongsTo(models.user, {
       foreignKey: 'userId',
       constraints: false
-    });
+    })
     solicitud.belongsTo(models.remitente, {
       foreignKey: 'remitenteId',
       constraints: false
-    });
+    })
   }
   return solicitud
 }

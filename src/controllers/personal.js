@@ -5,13 +5,12 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 class PersonalController {
-  
   findAll (req, res, next) {
     const condition = {}
-    const fields= ['nom', 'app', 'apm']
+    const fields = ['nom', 'app', 'apm']
     if (Object.keys(req.query).length) {
       const search = req.query.search
-      condition.where = {[Op.or]: []}
+      condition.where = { [Op.or]: [] }
       for (const field of fields) {
         condition.where[Op.or].push({
           [field]: {
@@ -28,7 +27,7 @@ class PersonalController {
     Personal.count(condition)
       .then(count => {
         Personal.findAll(condition)
-          .then(personals =>{
+          .then(personals => {
             const range = `${req.query.range}/${count}`
             res.status(206)
             res.append('Content-Range', range)

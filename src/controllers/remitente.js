@@ -5,13 +5,12 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 class RemitenteController {
-  
   findAll (req, res, next) {
     const condition = {}
-    const fields= ['nombre', 'cargo', 'servicio']
+    const fields = ['nombre', 'cargo', 'servicio']
     if (Object.keys(req.query).length) {
       const search = req.query.search
-      condition.where = {[Op.or]: []}
+      condition.where = { [Op.or]: [] }
       for (const field of fields) {
         condition.where[Op.or].push({
           [field]: {
@@ -28,7 +27,7 @@ class RemitenteController {
     Remitente.count(condition)
       .then(count => {
         Remitente.findAll(condition)
-          .then(remitentes =>{
+          .then(remitentes => {
             const range = `${req.query.range}/${count}`
             res.status(206)
             res.append('Content-Range', range)
