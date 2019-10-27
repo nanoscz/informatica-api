@@ -40,11 +40,11 @@ class PersonalController {
     Solicitud.count(condition)
       .then(count => {
         Solicitud.findAll(condition)
-          .then(personals => {
+          .then(solicituds => {
             const range = `${req.query.range}/${count}`
             res.status(206)
             res.append('Content-Range', range)
-            res.json({ personals, count })
+            res.json({ solicituds, count })
           })
           .catch(err => next(err))
       })
