@@ -2,6 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   const solicitud = sequelize.define('solicitud', {
+    id: DataTypes.INTEGER,
     ruta: DataTypes.INTEGER,
     fecha: DataTypes.DATE,
     referencia: DataTypes.TEXT,
