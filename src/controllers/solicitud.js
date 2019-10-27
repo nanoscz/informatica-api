@@ -6,7 +6,7 @@ const Remitente = require('../models').remitente
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
-class PersonalController {
+class SolicitudController {
   findAll (req, res, next) {
     const condition = {
       where: {
@@ -15,7 +15,8 @@ class PersonalController {
       include: [
         { model: User },
         { model: Remitente }
-      ]
+      ],
+      order: [['id', 'DESC']]
     }
 
     if (Object.keys(req.query).length) {
@@ -78,4 +79,4 @@ class PersonalController {
   }
 }
 
-module.exports = PersonalController
+module.exports = SolicitudController
