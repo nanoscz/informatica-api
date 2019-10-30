@@ -22,7 +22,7 @@ class SolicitudController {
     if (Object.keys(req.query).length) {
       const search = req.query.search
       if (search) {
-        const fields = ['ruta', 'referencia', 'cite']
+        const fields = ['ruta', 'referencia', 'cite', '$Remitente.nombre$']
         condition.where[Op.or] = []
         for (const field of fields) {
           condition.where[Op.or].push({
