@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "detargetni",
+    "password": null,
     "database": "db_informatica",
     "host": "127.0.0.1",
     "dialect": "mysql"
