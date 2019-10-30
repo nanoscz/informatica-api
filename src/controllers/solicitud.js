@@ -16,7 +16,7 @@ class SolicitudController {
         { model: User },
         { model: Remitente }
       ],
-      order: [['id', 'DESC']]
+      order: [['fecha', 'DESC']]
     }
 
     if (Object.keys(req.query).length) {
