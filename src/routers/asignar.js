@@ -18,5 +18,4 @@ router
   .route('/solicitud/:solicitudId/personal/:personalId')
   .delete(asignarController.delete)
 
-
 module.exports = router
