@@ -33,7 +33,7 @@ class AsignarController {
   }
 
   create(req, res, next) {
-    let asignars = req.body.asignar;
+    let asignars = req.body
     Asignar.bulkCreate(asignars)
       .then(() => res.status(201).end())
       .catch((err) => next(err))
