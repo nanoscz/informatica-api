@@ -39,6 +39,19 @@ class AsignarController {
       .catch((err) => next(err))
   }
 
+  delete(req, res, next) {
+    const solicitudId = req.params.solicitudId
+    const personalId = req.params.personalId
+    Asignar.destroy({
+      where: {
+        solicitudId,
+        personalId
+      }
+    })
+      .then(() => res.status(204).end())
+      .catch((err) => next(err))
+  }
+
 }
 
 module.exports = AsignarController

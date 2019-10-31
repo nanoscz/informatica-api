@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 			field: 'solicitud_id',
 			primaryKey: true
 		},
-		PersonalId: {
+		personalId: {
 			type: DataTypes.INTEGER,
 			field: 'personal_id',
 			primaryKey: true
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 		tableName: 'infor_asignar',
 		timestamps: false,
 		defaultScope: {
-      attributes: { exclude: ['PersonalId', 'solicitudId'] }
+      attributes: { exclude: ['personalId', 'solicitudId'] }
     }
 	})
 	asignar.associate = function (models) {
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 			constraints: false
 		})
 		asignar.belongsTo(models.personal, {
-			foreignKey: 'PersonalId',
+			foreignKey: 'personalId',
 			constraints: false
 		})
 	}
