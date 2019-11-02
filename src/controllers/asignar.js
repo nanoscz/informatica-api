@@ -19,13 +19,14 @@ class AsignarController {
           const { personal } = element
           const p = personal.dataValues
           return {
+            id: p.id,
             fullName: `${p.nom} ${p.app} ${p.apm}`
           }
         })
 
         res.json({
           solicitudId,
-          personal: personals
+          assignedPersonal: personals
         })
       })
       .catch((err) => next(err))
