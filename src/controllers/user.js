@@ -26,22 +26,23 @@ class UserController {
   }
 
   login (req, res, next) {
+    const error = {
+      name: 'Authentication Error.',
+      message: 'The username or password is incorrect.'
+    }
     const body = req.body
     User.findOne({ where: { username: body.username } })
       .then(user => {
         if (!user) {
-          return res.status(400).send({
-            error: {
-              name: 'Authentication Error',
-              message: 'The username or password is incorrect'
-            }
-          })
+          return res.status(400).json(error)
         }
         bcrypt.compare(body.password, user.password)
           .then((result) => {
             if (result) {
               delete user.dataValues.password
               res.json(user)
+            } else {
+              return res.status(400).json(error)
             }
           })
           .catch(err => next(err))
