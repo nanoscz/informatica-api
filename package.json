@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "DEBUG=INFORMATICA-API:* NODE_ENV=development nodemon server.js",
-    "dev-win": "set=DEBUG=INFORMATICA-API:* & set=NODE_ENV=development & nodemon server.js",
-    "start": "NODE_ENV=production node server.js",
+    "dev-win": "set=DEBUG=INFORMATICA-API:* & set=NODE_ENV=development & nodemon ./server.js",
+    "start": "NODE_ENV=production node ./server.js",
     "lint": "standard",
     "migrate": "sequelize db:migrate"
   },
