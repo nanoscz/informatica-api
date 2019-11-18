@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "DEBUG=INFORMATICA-API:* NODE_ENV=development nodemon server.js",
     "dev-win": "set=DEBUG=INFORMATICA-API:* & set=NODE_ENV=development & nodemon ./server.js",
-    "start": "NODE_ENV=production node ./server.js",
+    "start": "node ./server.js",
     "lint": "standard",
     "migrate": "sequelize db:migrate"
   },
@@ -20,10 +20,10 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.7.0",
     "nconf": "^0.10.0",
-    "sequelize": "^5.19.4"
+    "sequelize": "^5.19.4",
+    "debug": "^4.1.1"
   },
   "devDependencies": {
-    "debug": "^4.1.1",
     "nodemon": "^1.19.3",
     "sequelize-cli": "^5.5.1",
     "standard": "^14.3.1"
